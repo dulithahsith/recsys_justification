@@ -38,7 +38,13 @@ from sklearn.metrics import matthews_corrcoef, f1_score, recall_score, precision
 from pytorch_pretrained_bert.file_utils import PYTORCH_PRETRAINED_BERT_CACHE
 from pytorch_pretrained_bert.modeling import BertForSequenceClassification, BertConfig, WEIGHTS_NAME, CONFIG_NAME
 from pytorch_pretrained_bert.tokenization import BertTokenizer
-from pytorch_pretrained_bert.optimization import BertAdam, warmup_linear
+from pytorch_pretrained_bert.optimization import BertAdam
+
+# Explicitly define warmup_linear since it's missing in newer versions
+def warmup_linear(x, warmup=0.002):
+    if x < warmup:
+        return x / warmup
+    return 1.0 - x
 
 logging.basicConfig(format = '%(asctime)s - %(levelname)s - %(name)s -   %(message)s',
                     datefmt = '%m/%d/%Y %H:%M:%S',
