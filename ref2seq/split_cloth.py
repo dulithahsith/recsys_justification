@@ -21,7 +21,7 @@ ps = parser.add_argument
 ps('--dataset', dest='dataset') # category
 args = parser.parse_args()
 #main = ''
-in_fp = './data/{}/{}_filter_flat_positive.large.json'.format(args.dataset, args.dataset)
+in_fp = './data/{}/{}_filter_flat_positive.large.jsonl'.format(args.dataset, args.dataset)
 
 limit = 99999999999
 # top_k_words = 10000

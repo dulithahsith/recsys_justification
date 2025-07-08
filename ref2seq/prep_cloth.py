@@ -76,6 +76,8 @@ test  = load_set('test')
 # check position of target edu
 train_mask_idx = []
 for d in train:
+    if len(d) < 3:
+        continue  
     user = d[0]
     item = d[1]
     texta = d[2]
