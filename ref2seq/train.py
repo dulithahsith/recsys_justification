@@ -183,6 +183,14 @@ def batchify(pairs, user_review, user_length, business_review, business_length, 
     nbatch = len(pairs) // bsz
     print("num of batch: ", nbatch)
     data = []
+    if nbatch == 0:
+        # Not enough data for a full batch, just return the remaining as one batch
+        if len(pairs) > 0:
+            if train_mask_idx is not None:
+                data.append(batch2TrainData(user_review, user_length, business_review, business_length, pairs, evaluation, train_mask_idx))
+            else:
+                data.append(batch2TrainData(user_review, user_length, business_review, business_length, pairs, evaluation))
+        return data
     if train_mask_idx is not None:
         print("Include train mask...")
         for i in range(nbatch):
@@ -213,7 +221,7 @@ def trainIters(args, corpus, reverse, n_epoch, learning_rate, batch_size, n_laye
     print(len(data.train))
     print(len(data.dev))
     print(len(data.test))
-    exit(0)
+    # exit(0)
 
 
     user_length, item_length = length #, user_length2, item_length2 = length
