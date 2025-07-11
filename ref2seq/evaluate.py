@@ -214,7 +214,7 @@ def evaluateRandomly(encoderU, encoderB, decoder, voc, \
     if beam_size == 1:
         output_words = evaluate(encoderU, encoderB, decoder, voc, \
                                 user_input_variable, business_input_variable, \
-                                ser_lengths, business_lengths, target_variable, \
+                                user_lengths, business_lengths, target_variable, \
                                 mask, max_target_len, beam_size, batch_size)
         print(" ".join(output_words[:-1]))
     else:
