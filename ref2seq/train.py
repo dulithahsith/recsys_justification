@@ -210,7 +210,7 @@ def trainIters(args, corpus, reverse, n_epoch, learning_rate, batch_size, n_laye
     print(args)
 
     currentDT = datetime.datetime.now()
-    directory = os.path.join(save_dir, args.corpus, 'model', '{}_{}_{}'.format(n_layers, hidden_size, currentDT.strftime('%Y-%m-%d-%H:%M:%S')))
+    directory = os.path.join(save_dir, args.corpus, 'model', '{}_{}_{}'.format(n_layers, hidden_size, currentDT.strftime('%Y-%m-%d-%H-%M-%S')))
     print(directory)
 
     print("corpus: {}, reverse={}, n_epoch={}, learning_rate={}, batch_size={}, n_layers={}, hidden_size={}, decoder_learning_ratio={}".format(corpus, reverse, n_epoch, learning_rate, batch_size, n_layers, hidden_size, decoder_learning_ratio))
