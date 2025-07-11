@@ -33,5 +33,6 @@ def masked_cross_entropy(logits, target, mask):
     # losses: (batch, max_len)
     losses = losses_flat.view(*target.size())
     # mask: (batch, max_len)
+    mask = mask.bool()  # Ensure mask is boolean
     loss = losses.masked_select(mask).mean()
     return loss
