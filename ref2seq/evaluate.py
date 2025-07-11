@@ -166,7 +166,7 @@ def decode(decoder, decoder_hidden, outU, outB, voc, batch_size, max_length=MAX_
             decoded_words.append('<eos>')
             break
         else:
-            decoded_words.append(voc.idx2word[ni])
+            decoded_words.append(voc.index_word[str(int(ni))])
 
         decoder_input = Variable(torch.LongTensor([[ni]]))
         decoder_input = decoder_input.cuda() if USE_CUDA else decoder_input
